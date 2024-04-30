@@ -1,0 +1,12 @@
+version: '3.8'
+
+services:
+  db:
+    image: postgres
+    environment:
+      POSTGRES_USER: amine
+      POSTGRES_PASSWORD: 1234
+      POSTGRES_DB: contact
+    ports:
+      - "5454:5432"
+    restart: always
