@@ -7,7 +7,7 @@ const ContactList = ({data, currentPage, getAllContacts }) =>{
             {data?.content?.length === 0 && <div>No Contacts. Please add a new contact</div>}
 
             <ul className='contact__list'>
-                {data?.content?.length > 0 && data.content.map(contact => <Contact contact={conatct} key={contact.id} />)}
+                {data?.content?.length > 0 && data.content.map(contact => <Contact contact={contact} key={contact.id} />)}
             </ul>
 
             {data?.content?.length > 0 && data?.totalPages > 1 &&
