@@ -1,5 +1,5 @@
-import React, {useState} from 'react'
-import {useParams} from "react-router-dom";
+import React, {useEffect, useState} from 'react'
+import {Link, useParams} from "react-router-dom";
 import {getContact, saveContact, udpatePhoto} from "../api/ContactService";
 
 
@@ -24,8 +24,25 @@ const ContactDetail = ({ updateContact, updateImage }) => {
             console.log(error);
         }
     };
+
+    useEffect(() => {
+        fetchContact(id);
+    }, []);
     return (
-        <div>ContactDetail</div>
+        <>
+        <Link to={'/Contacts'} className='link'><i className='bi bi-arrow-left'></i>Back to list</Link>
+            <div className='profile'>
+                <div className='profile__details'>
+                    <img src={contact.photoUrl} alt={`Profile photo of ${contact.name}`}/>
+                    <div className='profile__metadata'>
+                        <p className='profile__name'>{contact.name}</p>
+                        <p className='profile__muted'>JPG, GIF, or PNG. Max size of 10MG</p>
+                        <button className='btn'><i className='bi bi-cloud-upload'></i>Change Photo</button>
+                    </div>
+                </div>
+                <div className='profile__settings'>Settings will go here</div>
+            </div>
+        </>
     )
 }
 
