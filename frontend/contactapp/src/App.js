@@ -1,4 +1,3 @@
-import './App.css';
 import { useEffect, useRef, useState } from 'react';
 import 'react-toastify/dist/ReactToastify.css';
 import Header from './components/Header'
@@ -25,6 +24,15 @@ function App() {
   });
 
   const getAllContacts = async (page = 0, size = 10) => {
+    try {
+      setCurrentPage(page);
+      const { data } = await getContacts(page, size);
+      setData(data);
+      console.log(data);
+    } catch (error) {
+      console.log(error);
+      toastError(error.message);
+    }
   };
 
   const onChange = (event) => {
@@ -145,7 +153,5 @@ function App() {
       </>
   );
 }
-
-
 
 export default App;
